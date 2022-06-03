@@ -1,0 +1,52 @@
+WARNING | logger-crud | 2022-06-02 17:51:45,140 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:51:46,009 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:51:46,783 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:51:54,769 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:51:56,254 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:51:58,808 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:53:26,201 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:53:26,992 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:53:27,193 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:53:27,438 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:53:28,704 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:53:30,619 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess
+WARNING | logger-crud | 2022-06-02 17:53:34,550 | crud_base.py | get_email() | line-43 | link (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8) -- rollback - SQLAlchemyError | MainProcess

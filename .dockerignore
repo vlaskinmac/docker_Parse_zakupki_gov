@@ -1,0 +1,31 @@
+../.idea/
+.vscode/
+*.sw*
+*.iml
+
+# The file containing environment variables
+**/venv
+
+# Ignore Logs
+logs.
+*.log
+log*.
+
+#  data base
+
+# other
+lesson_api/less_1/probe.py
+__pycache__
+Thumbs.db
+.DS_Store
+probe*.py
+example.py
+x*
+
+# config  files
+auth*.py
+probe*
+*.env
+
+config*
+.config*

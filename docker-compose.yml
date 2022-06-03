@@ -71,9 +71,6 @@ services:
     container_name: data_base_lids
     restart: unless-stopped
 
-    ports:
-      - 5433
-
     volumes:
       - ./db_postgresql:/var/lib/postgresql/data/pgdata
 
