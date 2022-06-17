@@ -21,6 +21,11 @@ services:
     environment:
       ENGINE: postgresql+psycopg2://postgres:Vfrcvfrc1@data_base_lids:5432/parse
       MONGO_URL: mongodb://db_mongo:27017
+
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+
     depends_on:
       - db
       - nginx
@@ -58,7 +63,6 @@ services:
       - 5557
 
     environment:
-
       ENGINE: postgresql+psycopg2://postgres:Vfrcvfrc1@data_base_lids:5432/parse
 
     volumes:
@@ -73,7 +77,6 @@ services:
 
     volumes:
       - ./db_postgresql:/var/lib/postgresql/data/pgdata
-
     environment:
       POSTGRES_PASSWORD: Vfrcvfrc1
       POSTGRES_USER: postgres
@@ -103,6 +106,8 @@ services:
       - db
     volumes:
       - ./db_mongo:/data/db
+#      - "/etc/localtime:/etc/localtime:ro"
+#      - "/etc/timezone:/etc/timezone:ro"
 
   nginx:
     image: nginx:latest

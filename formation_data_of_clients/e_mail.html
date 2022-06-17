@@ -67,10 +67,23 @@
 </head>
 
     <body style="margin: 0; padding: 0;">
-        <div style="font-size:0px;font-color:#ffffff;opacity:0;visibility:hidden;width:0;height:0;display:none;">
-            Тестовое письмо
-        </div>
+<!--    <div style="font-size:0px;font-color:#ffffff;opacity:0;visibility:hidden;width:0;height:0;display:none;">-->
+<!--            Возврат комиссии 15% от оплаченного счета! Расчет комиссии по нескольким банкам!-->
+<!--        </div>-->
+
         <table cellpadding="0" cellspacing="0" width="100%"  bgcolor="#ededed">
+            <tr>
+                <td>
+                    <table align="center" style="height:70px;" class="table-600" cellpadding="0" cellspacing="0" width="600" bgcolor="#fffafa">
+                        <tr>
+                            <td>
+                                <a style="padding-left: 520px;font-family: Verdana, Geneva, Tahoma, sans-serif; color:#5c68e2; font-size: 14px;line-height: 17px; margin-top: 0; margin-bottom: 0;" href="mailto:complaint@offenbach-debussy.ru?subject=Отпишите меня&body=Потому, что Ваша рассылка меня достала!">отписаться</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
             <tr>
                 <td>
                     <table align="center" class="table-600" cellpadding="0" cellspacing="0" width="600"  style="background: url('http://www.testtesseract.ru/images/2.jpg');"  bgcolor="#5C68E2">
@@ -104,7 +117,7 @@
                                     <tr>
                                         <td align="left">
                                             <h1 style="padding-left: 20px;font-family: Verdana, Geneva, Tahoma, sans-serif; color:#491a0e; margin-top: 0px; margin-bottom: 10px;font-size: 16px;line-height: 36px;">
-                                                Срок бг: <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#491a0e;;font-size: 12px;"> по</span> <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#0e4922;;font-size: 16px;">{{ term_bg }}</span> <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#491a0e;;font-size: 12px;">г.</span> <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#0e4922;;font-size: 16px;">({ term days })</span> дней
+                                                Срок бг: <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#491a0e;;font-size: 12px;"> по</span> <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#0e4922;;font-size: 16px;">{{ term_bg }}</span> <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#491a0e;;font-size: 12px;">г.</span> <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#0e4922;;font-size: 16px;"> ({{ term_days }})</span> дней
                                             </h1>
                                         </td>
                                     </tr>
@@ -134,17 +147,23 @@
                                 </table>
                             </td>
                         </tr>
-
                     </table>
                 </td>
             </tr>
             <tr>
                 <td>
                     <table align="center" class="table-600" cellpadding="0" cellspacing="0" width="600" style="background-color: #fffafa;" bgcolor="#a286bd;">
+
                         <tr>
                             <td align="center">
-                                <!-- <h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#0d0c0c; font-size: 14px;line-height: 17px; margin-top: 0; margin-bottom: 0;">Можно выбрать предложения от других банков:</h6> -->
-                                <h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#5c68e2; font-size: 14px;line-height: 17px; margin-top: 0; margin-bottom: 0;">Можно выбрать предложения от других банков:</h6>
+                                <a href="mailto:clientst@offenbach-debussy.ru?subject=Заявка на бг по закупке: № {{ tender_number }}, банк: {{ bank }} цена: {{ best_price }} руб&body=%0AПожалуйста, загрузите документы и отправьте письмо:%0A {{ document }} "
+                                   style="display: block; width: 160px; height: 22px; background-color:#f54bca; text-decoration: none; padding-top: 8px; padding-bottom: 6px; border-radius: 4px; font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 16px;line-height:17px; color: #fffafa;">Подать заявку</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="center">
+                                <h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#5c68e2; font-size: 14px;line-height: 17px; margin-top: 10; margin-bottom: 0;">Предложения от других банков:</h6>
                             </td>
                         </tr>
                         <tr>
@@ -159,11 +178,15 @@
 
                                          {% for banks_price in banks %}
                                         <tr>
-                                            <td align="left" style="padding-left: 50px;font-family: Verdana, Geneva, Tahoma, sans-serif; color:#5c68e2; font-size: 20px;line-height: 17px; margin-top: 0; margin-bottom: 0;padding-top: 20px;">
-                                                {{   banks_price['name'] }}
+                                            <td align="left" style="padding-left: 50px;font-family: Verdana, Geneva, Tahoma, sans-serif; color:#5c68e2; font-size: 16px;line-height: 17px; margin-top: 0; margin-bottom: 0;padding-top: 20px;">
+                                                {{ banks_price['name'] }}
                                             </td>
-                                            <td align="left" style="padding-left: 50px;font-family: Verdana, Geneva, Tahoma, sans-serif; color:#5c68e2; font-size: 20px;line-height: 17px; margin-top: 0; margin-bottom: 0;padding-top: 20px;">
-                                                {{ banks_price['price_bg'] }} рублей
+                                            <td align="left" style="padding-left: 40px;font-family: Verdana, Geneva, Tahoma, sans-serif; color:#5c68e2; font-size: 16px;line-height: 17px; margin-top: 0; margin-bottom: 0;padding-top: 20px;">
+                                                {{ banks_price['price_bg'] }} руб
+                                                <td>
+                                                    <a href="mailto:clientst@offenbach-debussy.ru?subject=Заявка на бг по закупке: № {{ tender_number }}, банк: {{ bank }} цена: {{ best_price }} руб&body=%0AПожалуйста, загрузите документы и отправьте письмо:%0A {{ document }}"
+                                                       style="display: block; width: 40px; height: 14px; background-color:#f54bca; text-decoration: none; margin-top: 20px; padding-left: 4px;; padding-top: 3px; padding-bottom: 6px; border-radius: 4px; font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 9px;line-height:17px; color: #fffafa;">Выбрать</a>
+                                                </td>
                                             </td>
                                         </tr>
                                     {% endfor %}
@@ -195,24 +218,23 @@
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">Юридические документы&nbsp;(цветные скан-копии):&nbsp;</span><br>
                                 <span></span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Устав&nbsp;</span><br>
-                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Решение/Протокол о создании общества (протокол);&nbsp;</span><br>
-                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Решение/Протокол (выписка из протокола) о назначении  &nbsp;директора (Ген. директора),&nbsp;</span><br>
+                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Решение/Протокол о создании общества, при наличии протокол продления полномочий руководителя;&nbsp;</span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Паспорта учредителей, Ген. Директора (Все страницы)&nbsp;</span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Карточка компании&nbsp;</span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;"></span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">Фин. Документы&nbsp;(цветные скан-копии):&nbsp;</span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;"></span><br>
-                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Баланс&nbsp;за 1 - кв. 2021 года&nbsp;&nbsp;Ф.1,2 заверенный (подпись, печать компании), с квитанцией о приеме в ИФНС&nbsp;&nbsp;&nbsp;</span><br>
-                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Годовой баланс за 2020 год Ф.1,2 заверенный (подпись, печать компании), с квитанцией о приеме в ИФНС</span><br>
+                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Баланс&nbsp;за 1 - кв. 2022 года&nbsp;&nbsp;Ф.1,2 заверенный (подпись, печать компании), с квитанцией о приеме в ИФНС&nbsp;&nbsp;&nbsp;</span><br>
+                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Годовой баланс за 2021 год Ф.1,2 заверенный (подпись, печать компании), с квитанцией о приеме в ИФНС</span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;"> </span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;"> &nbsp;УСН:</span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;"></span><br>
-                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Деклараця по УСН за 2020 год заверенная (подпись, печать компании), с квитанцией о приеме в ИФНС&nbsp; &nbsp; &nbsp;&nbsp;</span><br>
+                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Налоговая декларация по УСН за 2020 год заверенная (подпись, печать компании), с квитанцией о приеме в ИФНС&nbsp; &nbsp; &nbsp;&nbsp;</span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;"> </span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;"> &nbsp;ОСН:&nbsp;</span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;"></span><br>
-                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Деклараця на прибыль за 1 - кв. 2021 года заверенная (подпись, печать компании с квитанцией о приеме в ФНС),&nbsp;&nbsp;&nbsp;</span><br>
-                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Деклараця на прибыль за 2020 год заверенная (подпись, печать компании с квитанцией о приеме в ФНС),</span><br>
+                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Налоговая декларация на прибыль за 1 - кв. 2022 года заверенная (подпись, печать компании с квитанцией о приеме в ФНС),&nbsp;&nbsp;&nbsp;</span><br>
+                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Налоговая декларация на прибыль за 2021 год заверенная (подпись, печать компании с квитанцией о приеме в ФНС),</span><br>
                                 <span> </span><br>
                                 <span> </span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;"><b>Физические лица:&nbsp;</b></span><br>
@@ -221,7 +243,7 @@
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Паспорт (Все страницы)&nbsp;</span><br>
                                 <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Карточка компании&nbsp;</span><br>
                                 <span></span><br>
-                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Декларация по УСН за 2020 год заверенная (подпись, печать компании), с квитанцией о приеме в ИФНС&nbsp;</span><br>
+                                <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #8558b1; font-size: 12px;">- Налоговая декларация по УСН за 2021 год заверенная (подпись, печать компании), с квитанцией о приеме в ИФНС&nbsp;</span><br>
                             </td>
                         </tr>
                     </table>
@@ -233,3 +255,5 @@
     </body>
 
 </html>
+
+<!--style="margin-top:20px; box-sizing:border-box; border-bottom:6px solid #f54bca;border-left:4px solid #f54bca;font-size:9px;border-right:4px solid #f54bca;border-top:6px solid #f54bca; width: 44px; height: 14px; background-color:#f54bca; text-decoration: none; border-radius: 4px; font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 9px;line-height:17px; color: #fffafa;">Выбрать</a>-->

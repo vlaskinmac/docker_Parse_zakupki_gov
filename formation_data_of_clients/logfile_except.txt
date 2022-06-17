@@ -5,3 +5,14 @@ WARNING | logger-except | 2022-05-31 08:33:40,533 | decorators.py | HTTPError - 
 WARNING | logger-except | 2022-05-31 08:57:27,075 | decorators.py | get_link_orderplan() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
 WARNING | logger-except | 2022-05-31 23:22:10,709 | decorators.py | get_term_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
 WARNING | logger-except | 2022-06-02 17:53:33,825 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-16 15:53:27,375 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-16 16:04:46,641 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-16 22:50:58,483 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-16 23:00:10,881 | decorators.py | get_price_nmck() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-16 23:12:12,266 | decorators.py | get_summ_bg() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-16 23:21:25,495 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-17 15:41:02,736 | decorators.py | get_term_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-17 16:15:26,382 | decorators.py | get_term_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-17 16:45:35,922 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-17 20:53:13,153 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-17 22:06:54,967 | decorators.py | get_term_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess

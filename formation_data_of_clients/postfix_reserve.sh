@@ -23,9 +23,6 @@ postconf -e "mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 194.67.92
 # systemctl restart postfix
 # service postfix restart
 
-#==========================================================
-# mail app
-
 echo 'export MAIL=~/Maildir' | tee -a /etc/bash.bashrc | tee -a /etc/profile.d/mail.sh
 source /etc/profile.d/mail.sh
 
@@ -42,4 +39,5 @@ echo 'init' | s-nail -s 'init' -Snorecord root
 ls -R ~/Maildir
 
 echo 'ok'
+
 

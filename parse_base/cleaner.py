@@ -11,6 +11,7 @@ import aiofiles
 import aiohttp
 
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
@@ -74,12 +75,15 @@ async def interface_of_paths_ip_ooo(session, semaphore, link, auth, proxy_):
 
 # ----тут async
 async def create_tasks_soap():
-    contaner_links= []
+    load_dotenv()
+    PROXY_IP = os.getenv("PROXY_IP")
+    PROXY_PASS = os.getenv("PROXY_PASS")
+    PROXY_LOGIN = os.getenv("PROXY_LOGIN")
+    contaner_links = []
 
     async with aiofiles.open("logfile_links.txt") as file:
         contaner = await file.read()
         contaner_links_pre = str(contaner).strip().split('\n')
-
 
         for link in contaner_links_pre:
             if re.search(r"https", str(link)):
@@ -90,21 +94,12 @@ async def create_tasks_soap():
         # breakpoint()
         print(len(contaner_links))
 
-
-
-
-
-    proxy_w = "http://185.29.127.235:45785"
-    proxy_auth = aiohttp.BasicAuth("Seltesseractmaks", "R6l3EhG")
-
-    # proxy_w = "http://185.113.137.118:1596"
-    # proxy_auth = aiohttp.BasicAuth("user79669", "rlgxk8")
+    proxy_w = PROXY_IP
+    proxy_auth = aiohttp.BasicAuth(PROXY_LOGIN, PROXY_PASS)
 
     rand_s = random.randint(18, 20)
     semaphore = asyncio.Semaphore(rand_s)
     rand_conn = random.randint(60, 70)
-
-
 
     print(rand_conn, ' --conn |', rand_s, '--semaphore ')
     conn = aiohttp.TCPConnector(limit=rand_conn)
@@ -289,8 +284,6 @@ def get_links_from_logfiles():
     popen = subprocess.Popen(comman, stdout=subprocess.PIPE, universal_newlines=True)
     std = popen.stdout.read().strip()
     memory = std.split('\n')
-
-
 
     with open('logfile_links.txt', 'a') as file:
         for i in memory:

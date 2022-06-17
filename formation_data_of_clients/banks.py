@@ -6,6 +6,7 @@ import urllib3
 
 from collections import defaultdict
 
+from dotenv import load_dotenv
 from itertools import count
 from pymongo import MongoClient
 from socket import socket
@@ -19,7 +20,7 @@ from render_mail import rebuild
 from banks_rates import *
 from decorators import requests_exception
 
-import logging.config
+
 import logging.config
 from logging_config import dict_config
 
@@ -77,11 +78,10 @@ def get_contaner_links(session, start_update_date, per_page, price_min, host):
     # листаем главную страницу
     count_contaner_links = 0
     for page in count(1):
-        print(page, '- page')
+        # print(page, '- page')
         payload["pageNumber"] = page
         try:
             response = session.get(url=url, params=payload, headers=head, timeout=3)
-            # print(response.url)
         except ReadTimeoutError as exc:
             print(exc)
         soup = BeautifulSoup(response.text, "lxml")
@@ -95,11 +95,13 @@ def get_contaner_links(session, start_update_date, per_page, price_min, host):
                 html_links.append(i.select_one("div .registry-entry__header-mid__number"))
         # --------------------------------------------------- получили контейнер ссылок
         contaner_links = [urljoin(host, i.select_one("a")["href"]) for i in html_links]
-        print(len(contaner_links), '- contaner_links')
+        # print(len(contaner_links), '- contaner_links')
+        logger.debug(f"contaner_links - {len(contaner_links)}")
         # print(contaner_links, '- contaner_links')
         count_contaner_links += len(contaner_links)
-        print(count_contaner_links, "total count_contaner_links")
-        print()
+        # print(count_contaner_links, "total count_contaner_links")
+        logger.debug(f"total contaner_links - {count_contaner_links}")
+
         # прерываем  листание главной
         if len(contaner_links) == 0:
             break
@@ -119,15 +121,14 @@ def get_info_per_tender(session, contaner_links):
     for tender_url, number in contaner_links.items():
         head = headers_random()
         count += 1
-
         # открываем страницу закупки
+        # print(tender_url, number)
         try:
             site_tender_response = session.get(url=tender_url, headers=head, timeout=3)
             # site_tender_response.raise_for_status()
             if site_tender_response.ok:
                 site_tender_html = BeautifulSoup(site_tender_response.text, 'lxml')
                 yield site_tender_html, tender_url, number
-
         except ReadTimeoutError as exc:
             print(exc)
         except ReadTimeout as exc:
@@ -328,21 +329,6 @@ def get_term_contract(session, orderplan):
         return caching
 
 
-def bubble_sort_price(prices):
-    # Устанавливаем swapped в True, чтобы цикл запустился хотя бы один раз
-    swapped = True
-    while swapped:
-        swapped = False
-        # for u in y:
-        for i in range(len(prices) - 1):
-            if prices[i]['price_bg'] > prices[i + 1]['price_bg']:
-                # Меняем элементы
-                prices[i]['price_bg'], prices[i + 1]['price_bg'] = prices[i + 1]['price_bg'], prices[i]['price_bg']
-                # Устанавливаем swapped в True для следующей итерации
-                swapped = True
-    return prices
-
-
 def get_result_collect_parametres(collect_parametres, caching):
     try:
         # lock = threading.Lock()
@@ -362,6 +348,8 @@ def get_result_collect_parametres(collect_parametres, caching):
             "banks_prices": None,
             "phone": phone,
             "email_content": None,
+            "best_price": None,
+            "bank_name": None,
         }
         if collect:
             # logger.debug(
@@ -369,17 +357,26 @@ def get_result_collect_parametres(collect_parametres, caching):
             #     f" {caching['term_contract']}, {caching['summ_bg']},"
             #     f" {mail} {caching['tender_link']}")
             summ = str(caching['summ_bg'].__round__())
-            coll = main_run(summ, caching['term_contract'])
-            if coll:
+            # ставки по банкам
+            banks_prices = main_run(summ, caching['term_contract'])
+
+
+            if banks_prices:
+
                 collect_parametres[caching['winner_inn']].append(collect)
-                banks_prices = bubble_sort_price(coll)
                 collect_parametres[caching['winner_inn']][0]["banks_prices"] = banks_prices
+
                 # print("==================================================================",collect_parametres)
                 # срендернное письмо
 
-                letter_html = rebuild(collect_parametres)
+
+                # letter_html, bank_name, best_price = rebuild(collect_parametres)
+                letter_html, bank_name, best_price = rebuild(collect_parametres)
                 collect_parametres[caching['winner_inn']][0]["email_content"] = letter_html
 
+                # банк и лучшая цена для заголовка письма
+                collect_parametres[caching['winner_inn']][0]["best_price"] = best_price
+                collect_parametres[caching['winner_inn']][0]["bank_name"] = bank_name
             else:
                 logger.warning(
                     f"- {caching['winner_inn']} - {caching['tender_number']} - no price")
@@ -389,14 +386,17 @@ def get_result_collect_parametres(collect_parametres, caching):
     except HTTPError as exc:
         logger.warning(f'HTTPError - {exc}')
     except Exception as exc:
+        print(exc)
         logger.debug(f"-----ERROR end -88888--  {exc}--")
     return collect_parametres
 
 
 def write_letter_db(result_collect_parametres, MONGO_URL):
     """ запись в mongo """
+    logger.debug("mongo\n")
 
     cluster = MongoClient(MONGO_URL)
+
     cluster.time_zone = 'Moscow'
 
     db = cluster["sent_letter_db"]
@@ -421,20 +421,27 @@ def write_letter_db(result_collect_parametres, MONGO_URL):
                 "create_datetime": datetime.datetime.now(),
                 "create_date": datetime.datetime.today(),
                 "flag_resending_and_delete_email": None,
+                "best_price": entire[0]["best_price"],
+                "bank_name_best_price": entire[0]["bank_name"],
             }
     try:
         if not collection.count_documents({"tender_number": full_collect_parametres["tender_number"]}):
-            print("отправка письма\n")
+            logger.debug(
+                f"сформировано mongo для первой отправки письма по тендеру:"
+                f" {full_collect_parametres['tender_number']},"
+                f" {full_collect_parametres['email_address']},"
+                f" инн: {full_collect_parametres['winner_inn']},"
+                f" create_date: {full_collect_parametres['create_date']}\n"
+            )
 
             if collection.count_documents({"_id": full_collect_parametres["_id"]}):
                 full_collect_parametres["_id"] = random.randint(4001, 8000)
             try:
                 collection.insert_one(full_collect_parametres)
                 print("записано! монго")
-                print()
                 # отправка письма
                 # send_email(full_collect_parametres)
-                collection.update_one({"_id":full_collect_parametres["_id"]}, {full_collect_parametres["flag_resending_and_delete_email "]: 1})
+                collection.update_one({"_id":full_collect_parametres["_id"]}, {full_collect_parametres["flag_resending_and_delete_email"]: 1})
             except Exception as exc:
                 print(exc, " --- MONGO EXC")
                 # print("result_collect_parametres:")
@@ -452,20 +459,31 @@ def write_letter_db(result_collect_parametres, MONGO_URL):
 
 
 if __name__ == "__main__":
+    load_dotenv()
+    PROXY_IP = os.getenv("PROXY_IP")
+    PROXY_PASS = os.getenv("PROXY_PASS")
+    PROXY_LOGIN = os.getenv("PROXY_LOGIN")
+
     semaphore = threading.Semaphore(1)
     caching = {}
     collect_parametres = defaultdict(list)
     MONGO_URL = os.environ.get('MONGO_URL')
     host = "https://zakupki.gov.ru"
     session = requests.Session()
-    auth_ = HTTPProxyAuth("Seltesseractmaks", "R6l3EhG")
-    proxy = {"http": 'http://185.29.127.235:45785'}
+
+    auth_ = HTTPProxyAuth(PROXY_LOGIN, PROXY_PASS)
+    proxy = {"http": PROXY_IP}
     session.proxies = proxy
     session.auth = auth_
 
-    start_update_date = '01.06.2022'
+    today = datetime.date.today()
+    start_update_date_obj = today - datetime.timedelta(days=2)
+    start_update_date = start_update_date_obj.strftime("%d.%m.%Y")
+    # print(start_update_date, 'start_update_date')
+
+    # start_update_date = '05.06.2022'
     per_page = 50
-    price_min = '1000000'
+    price_min = '50000000'
     count_total = 0
     count_status_ok = 0
     count_status_no = 0

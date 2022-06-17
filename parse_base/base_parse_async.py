@@ -24,6 +24,7 @@ import requests
 
 from bs4 import BeautifulSoup
 from datetime import timedelta
+from dotenv import load_dotenv
 from itertools import count
 
 from requests import HTTPError, ReadTimeout
@@ -75,14 +76,13 @@ def get_total_pages(response, per_page):
     return math.ceil(pages)
 
 
-def get_content_by_segments(period_segment, start_date_str, page, per_page, end_date):
+def get_content_by_segments(period_segment, start_date_str, page, per_page, end_date, PROXY_IP, PROXY_PASS, PROXY_LOGIN):
     global count_line
     session = requests.Session()
 
     prepare_start_segment_date_obj = prepare_period_start_segment(start_date_str)
-    auth_ = HTTPProxyAuth("Seltesseractmaks", "R6l3EhG")
-    # proxy = {"http": "http://Seltesseractmaks:R6l3EhG@185.29.127.235:45785"}
-    proxy = {"http": 'http://185.29.127.235:45785'}
+    auth_ = HTTPProxyAuth(PROXY_LOGIN, PROXY_PASS)
+    proxy = {"http": PROXY_IP}
     session.proxies = proxy
     session.auth = auth_
 
@@ -128,7 +128,6 @@ def get_content_by_segments(period_segment, start_date_str, page, per_page, end_
         except Exception as exc:
             logger.warning(f"{exc} --")
 
-
         for num_page in count(1):
             count_line = 0
             start_p = time.time()
@@ -172,11 +171,11 @@ def get_content_by_segments(period_segment, start_date_str, page, per_page, end_
             break
 
 
-def get_links_by_segments(period_segment, start_date_str, page, per_page, end_date):
+def get_links_by_segments(period_segment, start_date_str, page, per_page, end_date, PROXY_IP, PROXY_PASS, PROXY_LOGIN):
     global count_links_total
     global count_total_new_email
     # --------------------------------------------------- получили html страницу c контейнером ссылок c одной страницы
-    links = get_content_by_segments(period_segment, start_date_str, page, per_page, end_date)
+    links = get_content_by_segments(period_segment, start_date_str, page, per_page, end_date, PROXY_IP, PROXY_PASS, PROXY_LOGIN)
     for link_text in links:
         soup = BeautifulSoup(link_text.text, "lxml")
         prepare_contaners = soup.select("div.search-registry-entry-block")
@@ -281,7 +280,6 @@ async def interface_of_paths_ip_ooo(session, semaphore, link, auth, proxy_):
             logger.warning(f"{link} -- {exc} aiohttp.ClientConnectorError")
 
 
-
 # async def interface_of_paths_ip_ooo(session, semaphore, link, auth, proxy_):
 #     # Getter function with semaphore.
 #     async with semaphore:
@@ -289,15 +287,15 @@ async def interface_of_paths_ip_ooo(session, semaphore, link, auth, proxy_):
 #         return await paths_ip_ooo(session, semaphore, link, auth, proxy_)
 
 # ----тут async
-async def create_tasks_soap(period_segment, start_date_str, page, per_page, end_date):
-    contaner_links = get_links_by_segments(period_segment, start_date_str, page, per_page, end_date)
+async def create_tasks_soap(period_segment, start_date_str, page, per_page, end_date, PROXY_IP, PROXY_PASS, PROXY_LOGIN):
+    contaner_links = get_links_by_segments(period_segment, start_date_str, page, per_page, end_date, PROXY_IP, PROXY_PASS, PROXY_LOGIN)
 
     for i in contaner_links:
 
         # print(links,'-=-=--')
 
-        proxy_w = "http://185.29.127.235:45785"
-        proxy_auth = aiohttp.BasicAuth("Seltesseractmaks", "R6l3EhG")
+        proxy_w = PROXY_IP
+        proxy_auth = aiohttp.BasicAuth(PROXY_LOGIN, PROXY_PASS)
 
         rand_s = random.randint(18, 20)
         # rand_s = random.randint(6, 7)
@@ -522,6 +520,7 @@ async def ooo_data(html, link):
             status_registration_eis=ooo["status_registration_eis"], address_yur=ooo["address_yur"],
             kpp=ooo["kpp"], phone=ooo["phone"],
         )
+
         check_inn = session_base.query(Lids.inn).filter_by(inn=ooo["inn"]).first()
         if not check_inn:
             session_base.add(lid)
@@ -540,7 +539,7 @@ async def ooo_data(html, link):
     # print(period)
 
 
-def main(period_segment, start_date_str, page, per_page, end_date):
+def main(period_segment, start_date_str, page, per_page, end_date, PROXY_IP, PROXY_PASS, PROXY_LOGIN):
     # logger.debug("Start!")
 
     start = time.time()
@@ -551,12 +550,17 @@ def main(period_segment, start_date_str, page, per_page, end_date):
     # per_page = 500
     print(period_segment, start_date_str, page, per_page, end_date)
 
-    asyncio.run(create_tasks_soap(period_segment, start_date_str, page, per_page, end_date))
+    asyncio.run(create_tasks_soap(period_segment, start_date_str, page, per_page, end_date, PROXY_IP, PROXY_PASS, PROXY_LOGIN))
     print(time.time() - start)
     print(count_line_total)
 
 
 if __name__ == "__main__":
+
+    load_dotenv()
+    PROXY_IP = os.getenv("PROXY_IP")
+    PROXY_PASS = os.getenv("PROXY_PASS")
+    PROXY_LOGIN = os.getenv("PROXY_LOGIN")
 
     start = time.time()
     period_segment = 14
@@ -564,12 +568,13 @@ if __name__ == "__main__":
     date_today_obj = datetime.datetime.today()
     date_today_str = datetime.datetime.strftime(date_today_obj, '%d.%m.%Y')
 
-    start_date_1 = '25.12.2018'
+    default_start_date_obj = date_today_obj - datetime.timedelta(days=31)
+    default_date_today_str = datetime.datetime.strftime(default_start_date_obj, '%d.%m.%Y')
 
-    end_date_1 = '31.12.2019'
-
-    # end_date_1 = date_today_str
-
+    user_start_date = os.environ.get('START_DATE', default_date_today_str)
+    start_date_1 = user_start_date
+    # end_date_1 = '31.12.2019'
+    end_date_1 = date_today_str
 
     # start_date_2 = '25.12.2019'
     start_date_2 = '10.01.2020'
@@ -599,14 +604,13 @@ if __name__ == "__main__":
 
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
     try:
-        # proc_1 = pool.apply_async(main, [period_segment, start_date_1, page, per_page, end_date_1])
+        proc_1 = pool.apply_async(main, [period_segment, start_date_1, page, per_page, end_date_1, PROXY_IP, PROXY_PASS, PROXY_LOGIN])
         # proc_2 = pool.apply_async(main, [period_segment, start_date_2, page, per_page, end_date_2])
-        proc_3 = pool.apply_async(main, [period_segment, start_date_3, page, per_page, end_date_3])
+        # proc_3 = pool.apply_async(main, [period_segment, start_date_3, page, per_page, end_date_3])
     except OSError as exc:
         logger.warning(f"{exc}")
     except Exception as exc:
         logger.warning(f"{exc} ----")
-
 
     pool.close()
     pool.join()

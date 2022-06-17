@@ -13,10 +13,10 @@ logging.config.dictConfig(dict_config)
 
 logger = logging.getLogger("crud")
 
-# engine = create_engine("postgresql+psycopg2://tesseractmaks:Vfrcvfrc1@localhost/parse")
+engine = create_engine("postgresql+psycopg2://tesseractmaks:Vfrcvfrc1@localhost/parse")
 
-postgres_url = os.environ.get('ENGINE')
-engine = create_engine(postgres_url)
+# postgres_url = os.environ.get('ENGINE')
+# engine = create_engine(postgres_url)
 
 Session = sessionmaker(bind=engine)
 session_base = Session()
