@@ -43,7 +43,7 @@ def send_email(entire_id):
             server.ehlo()
             server.starttls()
             # subject = "({})₽ Комиссия: {} руб. за бг по закупке: № {} кешбэк 15% от счета".format(entire_id['email_address'], entire_id['best_price'], entire_id['tender_number'])
-            subject = f"₽ Комиссия: {entire_id['best_price']} руб. за бг по закупке: № {entire_id['tender_number']} кешбэк 15% от счета"
+            subject = f"₽ Комиссия: {entire_id['best_price']} руб. за БГ по закупке: № {entire_id['tender_number']} кешбэк 15% от счета"
             msg = MIMEMultipart()
             msg['Content-Type'] = 'text/html', 'text/plain'
             msg['Subject'] = subject
@@ -56,6 +56,8 @@ def send_email(entire_id):
             msg['List-Unsubscribe-Post'] = 'List-Unsubscribe=One-Click'
             msg['List-Unsubscribe'] = '<mailto:complaint@offenbach-debussy.ru?subject=unsubscribe>'
             msg['Precedence'] = 'bulk'
+            with open('index.html', 'w') as file:
+                file.write(entire_id['email_content'])
             try:
                 with open('index.html') as file:
                     template = file.read()

@@ -42,7 +42,8 @@ if __name__ == "__main__":
     logging.config.dictConfig(dict_config)
     logger = logging.getLogger('proc_1')
     # logging.disable(logging.DEBUG)
-    cluster = MongoClient("mongodb://localhost:27017")
+    # cluster = MongoClient("mongodb://localhost:27017")
+    cluster = MongoClient("mongodb://194.67.92.2:27018")
     # mongo_url = os.environ.get('MONGO_URL')
     # cluster = MongoClient(mongo_url)
     sent_letters_db = cluster["sent_letter_db"]

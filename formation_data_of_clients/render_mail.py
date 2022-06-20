@@ -15,7 +15,6 @@ def get_text_for_body(email_address):
     return documents
 
 
-
 def rebuild(result_collect_parametres):
 
     banks_price = None
@@ -25,6 +24,8 @@ def rebuild(result_collect_parametres):
         term_bg = value[0]['term_contract']
         summ_bg = value[0]['summ_bg']
         tender_number = value[0]['tender_number']
+        winner_inn = value[0]['winner_inn']
+        full_name = value[0]['full_name']
 
         datetime_obj = datetime.datetime.strptime(term_bg, "%d.%m.%Y")
         term_days_obj = datetime_obj - current_date
@@ -37,6 +38,7 @@ def rebuild(result_collect_parametres):
         )
         best_price = banks_price[0]['price_bg']
         bank_name = banks_price[0]['name']
+
 
         template = env.get_template('e_mail.html')
 
@@ -51,6 +53,8 @@ def rebuild(result_collect_parametres):
             bank=bank_name,
             tender_number=tender_number,
             term_days=term_days_obj.days,
+            winner_inn=winner_inn,
+            full_name=full_name,
             document=get_text_for_body(value[0]["email_address"]))
 
 
