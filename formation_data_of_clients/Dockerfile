@@ -9,14 +9,13 @@ RUN apt-get update
 RUN apt-get install --yes --no-install-recommends apt-utils
 RUN apt-get install --yes --no-install-recommends apt-transport-https
 
-#RUN mkdir /app
 WORKDIR /app
 
 COPY . .
 
-RUN ["chmod", "777","./postfix.sh"]
-
-RUN bash -c ". postfix.sh"
+# RUN ["chmod", "777","./postfix.sh"]
+#
+# RUN bash -c ". postfix.sh"
 
 RUN apt-get install pip -y
 

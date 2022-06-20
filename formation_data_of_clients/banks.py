@@ -395,11 +395,8 @@ def get_result_collect_parametres(collect_parametres, caching):
 def write_letter_db(result_collect_parametres, MONGO_URL):
     """ запись в mongo """
     logger.debug("mongo\n")
-
     cluster = MongoClient(MONGO_URL)
-
     cluster.time_zone = 'Moscow'
-
     db = cluster["sent_letter_db"]
     collection = db["sent_letters"]
 
@@ -419,40 +416,26 @@ def write_letter_db(result_collect_parametres, MONGO_URL):
                 "phone": entire[0]["phone"],
                 "banks_prices": entire[0]["banks_prices"],
                 "email_content": entire[0]["email_content"],
-                "create_datetime": datetime.datetime.now(),
                 "create_date": datetime.datetime.today(),
-                "flag_resending_and_delete_email": None,
+                "send_status": None,
                 "best_price": entire[0]["best_price"],
                 "bank_name_best_price": entire[0]["bank_name"],
             }
     try:
         if not collection.count_documents({"tender_number": full_collect_parametres["tender_number"]}):
-            logger.debug(
-                f"сформировано mongo для первой отправки письма по тендеру:"
-                f" {full_collect_parametres['tender_number']},"
-                f" {full_collect_parametres['email_address']},"
-                f" инн: {full_collect_parametres['winner_inn']},"
-                f" create_date: {full_collect_parametres['create_date']}\n"
-            )
-
+            # logger.debug(
+            #     f"сформировано mongo для первой отправки письма по тендеру:"
+            #     f" {full_collect_parametres['tender_number']},"
+            #     f" {full_collect_parametres['email_address']},"
+            #     f" инн: {full_collect_parametres['winner_inn']},"
+            #     f" create_date: {full_collect_parametres['create_date']}\n"
+            # )
             if collection.count_documents({"_id": full_collect_parametres["_id"]}):
                 full_collect_parametres["_id"] = random.randint(4001, 8000)
             try:
                 collection.insert_one(full_collect_parametres)
-                # print("записано! монго")
-                # отправка письма
-                send_email(full_collect_parametres)
-                collection.update_one({"_id":full_collect_parametres["_id"]}, {full_collect_parametres["flag_resending_and_delete_email"]: 1})
-                logger.debug(f"{full_collect_parametres['email_address']} - Письмо отправлено!\n")
             except Exception as exc:
                 logger.debug(f"{exc} --- MONGO EXC")
-
-                # print("result_collect_parametres:")
-                # pprint(result_collect_parametres)
-                # print("full_collect_parametres:")
-                # pprint(full_collect_parametres)
-                # print(len(result_collect_parametres), "len-2")
-
         else:
             tender_number = collection.find_one({"_id": full_collect_parametres["_id"]})["tender_number"]
             print(tender_number, ' +++++++ тендер уже существует ------mongo +++')
@@ -483,9 +466,9 @@ if __name__ == "__main__":
     # start_update_date = start_update_date_obj.strftime("%d.%m.%Y")
     # print(start_update_date, 'start_update_date')
 
-    start_update_date = '16.06.2022'
+    start_update_date = '17.06.2022'
     per_page = 100
-    price_min = '200000'
+    price_min = '1000000'
     count_total = 0
     count_status_ok = 0
     count_status_no = 0

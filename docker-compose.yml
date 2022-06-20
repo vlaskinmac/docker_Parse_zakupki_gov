@@ -5,8 +5,8 @@ services:
   app:
     build: ./formation_data_of_clients
     container_name: app_formation_data_of_clients
-    extra_hosts:
-      - "prod.offenbach-debussy.ru prod:194.67.92.2"
+#    extra_hosts:
+#      - "prod.offenbach-debussy.ru prod:194.67.92.2"
     command:
       - python3
       - banks.py
@@ -14,9 +14,6 @@ services:
 
     ports:
       - 5553
-      - 25
-      - 80
-      - 8080
 
     environment:
       ENGINE: postgresql+psycopg2://postgres:Vfrcvfrc1@data_base_lids:5432/parse
@@ -31,25 +28,23 @@ services:
       - nginx
       - db_mongo
 
-  app_resending_and_delete:
-    build: ./resending_and_delete_email
-    container_name: app_resending_and_delete
-    command:
-      - python3
-      - resending_and_delete.py
-    restart: unless-stopped
-
-    ports:
-      - 5556
-      - 25
-
-    environment:
-      MONGO_URL: mongodb://db_mongo:27017
-    depends_on:
-      - db
-      - nginx
-      - db_mongo
-      - app
+#  app_resending_and_delete:
+#    build: ./resending_and_delete_email
+#    container_name: app_resending_and_delete
+#    command:
+#      - python3
+#      - first_send_email.py
+#    restart: unless-stopped
+#
+#    ports:
+#      - 5556
+#    environment:
+#      MONGO_URL: mongodb://db_mongo:27017
+#    depends_on:
+#      - db
+#      - nginx
+#      - db_mongo
+#      - app
 
   app_parse_base:
     build: ./parse_base

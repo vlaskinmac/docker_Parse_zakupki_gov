@@ -15,9 +15,9 @@ logger = logging.getLogger('proc_1')
 # from resender_mail import send_email
 
 if __name__ == "__main__":
-    # cluster = MongoClient("mongodb://localhost:27017")
-    mongo_url = os.environ.get('MONGO_URL')
-    cluster = MongoClient(mongo_url)
+    cluster = MongoClient("mongodb://localhost:27017")
+    # mongo_url = os.environ.get('MONGO_URL')
+    # cluster = MongoClient(mongo_url)
 
     sent_letters_db = cluster["sent_letter_db"]
     sent_letters_collection = sent_letters_db["sent_letters"]
