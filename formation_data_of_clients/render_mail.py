@@ -5,7 +5,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
 def get_text_for_body(email_address):
-    gmail_adress = re.search(r"@gmail", str(email_address)).group()
+    gmail_adress = re.search(r"@gmail", str(email_address))
     if gmail_adress:
         filename = 'gmail_documents_list.txt'
     else:
@@ -13,6 +13,7 @@ def get_text_for_body(email_address):
     with open(filename) as file:
         documents = file.read()
     return documents
+
 
 
 def rebuild(result_collect_parametres):

@@ -17,7 +17,8 @@ from logging_config import dict_config
 logging.config.dictConfig(dict_config)
 logger = logging.getLogger('proc_1')
 
-def send_email(full_collect_parametres):
+
+def sen_email():
     try:
 
         #text = "hello"
@@ -46,9 +47,10 @@ def send_email(full_collect_parametres):
         # server.login(sender, password)
         # server.login('user', password)
 
-        subject = "({})₽ Комиссия: {} руб. за бг по закупке: № {} кешбэк 15% от счета".format(full_collect_parametres['email_address'], full_collect_parametres['best_price'], full_collect_parametres['tender_number'])
+        # subject = "({})₽ Комиссия: {} руб. за бг по закупке: № {} кешбэк 15% от счета".format(full_collect_parametres['email_address'], full_collect_parametres['best_price'], full_collect_parametres['tender_number'])
         # subject = f"₽ Комиссия: {full_collect_parametres['best_price']} руб. за бг по закупке: № {full_collect_parametres['tender_number']} кешбэк 15% от счета"
         # getter = full_collect_parametres['email_address']
+        subject = '999'
         getter = 'kangelina86@mail.ru'
         msg = MIMEMultipart()
         msg['Content-Type'] = 'text/html', 'text/plain'
@@ -69,13 +71,13 @@ def send_email(full_collect_parametres):
                 msg.attach(MIMEText(template, 'html'))
         except IOError:
             logger.debug("нет шаблона письма\n")
-            return "No file"
+        print("+++++++")
 
         server.sendmail(sender, getter, msg.as_string())
     except Exception as exc:
         logger.debug("{} ошибка при отправке письма\n".format(exc))
 
-
+sen_email()
     # -------------------------------------------------прогрев:
 
     # count = 0

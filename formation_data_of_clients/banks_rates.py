@@ -2,19 +2,20 @@
 import collections
 import datetime
 import json
-import multiprocessing
+
+import os
 import random
 import re
-import threading
-import time
-from pprint import pprint
 
+import time
 import requests
+
+from dotenv import load_dotenv
 from requests.auth import HTTPProxyAuth
 from bs4 import BeautifulSoup
 
 from decorators import time_track, requests_exception
-import humanize
+
 
 @requests_exception
 def headers_random():
@@ -34,12 +35,16 @@ def goofinbanks_getting_data(sum_bg, end_date):
     Банк-РГС - 92,
     Промсвязьбанк - 84
     """
+    load_dotenv()
+    PROXY_IP = os.getenv("PROXY_IP")
+    PROXY_PASS = os.getenv("PROXY_PASS")
+    PROXY_LOGIN = os.getenv("PROXY_LOGIN")
 
     filename = 'ttt.txt'
     url_goodfin = "https://goodfin.ru/calculator_get_results.php"
     session = requests.Session()
-    auth_ = HTTPProxyAuth("Seltesseractmaks", "R6l3EhG")
-    proxy = {"http": 'http://185.29.127.235:45785'}
+    auth_ = HTTPProxyAuth(PROXY_LOGIN, PROXY_PASS)
+    proxy = {"http": PROXY_IP}
     session.proxies = proxy
     session.auth = auth_
     head = headers_random()

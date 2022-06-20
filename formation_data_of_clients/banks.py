@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
+import threading
 from pprint import pprint
-
+from bs4 import BeautifulSoup
 import urllib3
 
 from collections import defaultdict
@@ -70,7 +71,7 @@ def get_contaner_links(session, start_update_date, per_page, price_min, host):
         "orderPlacement94_0": 0,
         "orderPlacement94_1": 0,
         "orderPlacement94_2": 0,
-        "searchTextInAttachedFile": "Сведения",
+        # "searchTextInAttachedFile": "Сведения",
         # виды закупок
         # "placingWayList": "EA44,EAP44,EAB44,EAO44,EEA44,OK504,OKP504,OKK504,OKA504,EOK504,OKB504,OKI504,OKU504,OKUP504,"
         #                   "OKUI504,EOKU504,OKUK504"
@@ -438,18 +439,19 @@ def write_letter_db(result_collect_parametres, MONGO_URL):
                 full_collect_parametres["_id"] = random.randint(4001, 8000)
             try:
                 collection.insert_one(full_collect_parametres)
-                print("записано! монго")
+                # print("записано! монго")
                 # отправка письма
-                # send_email(full_collect_parametres)
+                send_email(full_collect_parametres)
                 collection.update_one({"_id":full_collect_parametres["_id"]}, {full_collect_parametres["flag_resending_and_delete_email"]: 1})
+                logger.debug(f"{full_collect_parametres['email_address']} - Письмо отправлено!\n")
             except Exception as exc:
-                print(exc, " --- MONGO EXC")
+                logger.debug(f"{exc} --- MONGO EXC")
+
                 # print("result_collect_parametres:")
                 # pprint(result_collect_parametres)
                 # print("full_collect_parametres:")
                 # pprint(full_collect_parametres)
                 # print(len(result_collect_parametres), "len-2")
-            print("\nПисьмо отправлено!\n")
 
         else:
             tender_number = collection.find_one({"_id": full_collect_parametres["_id"]})["tender_number"]
@@ -476,14 +478,14 @@ if __name__ == "__main__":
     session.proxies = proxy
     session.auth = auth_
 
-    today = datetime.date.today()
-    start_update_date_obj = today - datetime.timedelta(days=2)
-    start_update_date = start_update_date_obj.strftime("%d.%m.%Y")
+    # today = datetime.date.today()
+    # start_update_date_obj = today - datetime.timedelta(days=2)
+    # start_update_date = start_update_date_obj.strftime("%d.%m.%Y")
     # print(start_update_date, 'start_update_date')
 
-    # start_update_date = '05.06.2022'
-    per_page = 50
-    price_min = '50000000'
+    start_update_date = '16.06.2022'
+    per_page = 100
+    price_min = '200000'
     count_total = 0
     count_status_ok = 0
     count_status_no = 0
@@ -516,42 +518,48 @@ if __name__ == "__main__":
                             caching = {}
                             # запись в mongo
                             write_letter_db(result_collect_parametres, MONGO_URL)
+
                             collect_parametres = defaultdict(list)
+                            # print()
+                            # print(result_collect_parametres)
+                            # print(len(result_collect_parametres), 'total rows - collect_parametres')
+                            # print('count_mail_ok -', count_mail_ok)
+                            # print('count_status_ok - ', count_status_ok)
+                            # print('count_total - ', count_total)
+                            # print()
                         else:
                             count_commom_exc += 1
-                            print("commom_exc:")
-                            print(result_collect_parametres)
+                            # print("commom_exc:")
                             collect_parametres = defaultdict(list)
-                            print()
-                            print(len(result_collect_parametres), 'total rows - collect_parametres')
-                            print('count_mail_ok -', count_mail_ok)
-                            print('count_status_ok - ', count_status_ok)
-                            print('count_total - ', count_total)
-                            print()
+
                     except:
                         print('KeyError: winner_inn', tender_url)
-                        print()
-                        print(caching['winner_inn'])
-                        print()
+                        # print()
+                        # print(caching['winner_inn'])
+                        # print()
                         # print('KeyError: winner_inn\n' * 5, tender_url)
             else:
                 count_status_no += 1
                 count_commom_exc += 1
 
         # pprint(result_collect_parametres)
+        logger.debug(f"{count_total} - count_total")
+        logger.debug(f"{count_mail_ok} - count_mail_ok")
+        logger.debug(f"{count_status_ok} - count_status_ok")
 
-        print()
-        print(len(result_collect_parametres), 'total rows - collect_parametres')
-        print('count_mail_ok -', count_mail_ok)
-        print('count_status_ok - ', count_status_ok)
-        print('count_total - ', count_total)
-        print()
-        print('count_commom_exc - ', count_commom_exc)
-        print('count_count_mongo_exc_exc - ', count_mongo_exc)
-        print("-"*70)
-        print()
-        if count_total > 5000:
-            print('count_total - ', count_total)
-            print('count_status_ok - ', count_status_ok)
-            print('count_mail_ok -', count_mail_ok)
-            break
+        # print()
+        # print(len(result_collect_parametres), 'total rows - collect_parametres')
+        # print('count_mail_ok -', count_mail_ok)
+        # print('count_status_ok ------------ ', count_status_ok)
+        # print('count_total - ', count_total)
+        # print()
+        # print('count_commom_exc - ', count_commom_exc)
+        # print('count_count_mongo_exc_exc - ', count_mongo_exc)
+        # print("-"*70)
+        # print()
+
+        # if count_total > 5000:
+        #     print('count_total - ', count_total)
+        #     print('count_status_ok - ', count_status_ok)
+        #     print('count_mail_ok -', count_mail_ok)
+        #     break
