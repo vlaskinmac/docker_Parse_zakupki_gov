@@ -16,3 +16,10 @@ WARNING | logger-except | 2022-06-17 16:15:26,382 | decorators.py | get_term_con
 WARNING | logger-except | 2022-06-17 16:45:35,922 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
 WARNING | logger-except | 2022-06-17 20:53:13,153 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
 WARNING | logger-except | 2022-06-17 22:06:54,967 | decorators.py | get_term_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-20 23:35:26,392 | decorators.py | HTTPError - 404 Client Error: Not Found for url: https://zakupki.gov.ru/epz/orderplan/pg2020/position-info.html?revision-id=7942174&position-number=202201162000081001000024 | MainProcess
+WARNING | logger-except | 2022-06-20 23:36:53,474 | decorators.py | get_link_orderplan() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-20 23:42:03,581 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-21 08:57:08,420 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-21 13:03:10,009 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-21 16:35:06,674 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-21 22:15:19,136 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess

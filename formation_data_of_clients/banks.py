@@ -48,6 +48,13 @@ def headers_random():
     return head
 
 
+def get_total_entires(soup):
+    """результаты поиска кол-во записей"""
+    prepare_total_pages = soup.select_one(".search-results__total").get_text(strip=True)
+    total_entires = re.sub(r"[^\d+]", "", prepare_total_pages)
+    logger.warning(f"Найдено записей -  {total_entires}")
+
+
 @requests_exception
 def get_contaner_links(session, start_update_date, per_page, price_min, host):
     url = "https://zakupki.gov.ru/epz/order/extendedsearch/results.html"
@@ -76,6 +83,10 @@ def get_contaner_links(session, start_update_date, per_page, price_min, host):
         # "placingWayList": "EA44,EAP44,EAB44,EAO44,EEA44,OK504,OKP504,OKK504,OKA504,EOK504,OKB504,OKI504,OKU504,OKUP504,"
         #                   "OKUI504,EOKU504,OKUK504"
     }
+    response = session.get(url=url, params=payload, headers=head, timeout=3)
+    print(response.url)
+    soup = BeautifulSoup(response.text, "lxml")
+    get_total_entires(soup)
     # листаем главную страницу
     count_contaner_links = 0
     for page in count(1):
@@ -83,9 +94,10 @@ def get_contaner_links(session, start_update_date, per_page, price_min, host):
         payload["pageNumber"] = page
         try:
             response = session.get(url=url, params=payload, headers=head, timeout=3)
+            soup = BeautifulSoup(response.text, "lxml")
         except ReadTimeoutError as exc:
             print(exc)
-        soup = BeautifulSoup(response.text, "lxml")
+
         html_links = []
         # --------------------------------------------------- получили html блок ссылок
         check = soup.select('div .registry-entry__form')
@@ -97,11 +109,11 @@ def get_contaner_links(session, start_update_date, per_page, price_min, host):
         # --------------------------------------------------- получили контейнер ссылок
         contaner_links = [urljoin(host, i.select_one("a")["href"]) for i in html_links]
         # print(len(contaner_links), '- contaner_links')
-        logger.debug(f"contaner_links - {len(contaner_links)}")
+        # logger.debug(f"contaner_links - {len(contaner_links)}")
         # print(contaner_links, '- contaner_links')
         count_contaner_links += len(contaner_links)
         # print(count_contaner_links, "total count_contaner_links")
-        logger.debug(f"total contaner_links - {count_contaner_links}")
+        # logger.debug(f"total contaner_links - {count_contaner_links}")
 
         # прерываем  листание главной
         if len(contaner_links) == 0:
@@ -388,13 +400,13 @@ def get_result_collect_parametres(collect_parametres, caching):
         logger.warning(f'HTTPError - {exc}')
     except Exception as exc:
         print(exc)
-        logger.debug(f"-----ERROR end -88888--  {exc}--")
+        logger.warning(f"-----ERROR end -88888--  {exc}--")
     return collect_parametres
 
 
 def write_letter_db(result_collect_parametres, MONGO_URL):
     """ запись в mongo """
-    logger.debug("mongo\n")
+
     cluster = MongoClient(MONGO_URL)
     cluster.time_zone = 'Moscow'
     db = cluster["sent_letter_db"]
@@ -434,8 +446,9 @@ def write_letter_db(result_collect_parametres, MONGO_URL):
                 full_collect_parametres["_id"] = random.randint(4001, 8000)
             try:
                 collection.insert_one(full_collect_parametres)
+                logger.warning("записано в mongo+++++++++++++\n")
             except Exception as exc:
-                logger.debug(f"{exc} --- MONGO EXC")
+                logger.warning(f"{exc} --- MONGO EXC")
         else:
             tender_number = collection.find_one({"_id": full_collect_parametres["_id"]})["tender_number"]
             print(tender_number, ' +++++++ тендер уже существует ------mongo +++')
@@ -444,6 +457,8 @@ def write_letter_db(result_collect_parametres, MONGO_URL):
 
 
 if __name__ == "__main__":
+    timenow_start = datetime.datetime.now()
+    print(timenow_start)
     load_dotenv()
     PROXY_IP = os.getenv("PROXY_IP")
     PROXY_PASS = os.getenv("PROXY_PASS")
@@ -461,12 +476,13 @@ if __name__ == "__main__":
     session.proxies = proxy
     session.auth = auth_
 
-    # today = datetime.date.today()
+    today = datetime.date.today()
+    start_update_date = today.strftime("%d.%m.%Y")
     # start_update_date_obj = today - datetime.timedelta(days=2)
     # start_update_date = start_update_date_obj.strftime("%d.%m.%Y")
     # print(start_update_date, 'start_update_date')
 
-    start_update_date = '17.06.2022'
+    # start_update_date = '17.06.2022'
     per_page = 100
     price_min = '1000000'
     count_total = 0
@@ -510,6 +526,11 @@ if __name__ == "__main__":
                             # print('count_status_ok - ', count_status_ok)
                             # print('count_total - ', count_total)
                             # print()
+                            # timenow = datetime.datetime.now()
+                            # print(timenow)
+                            # logger.warning(f"{count_total} - count_total")
+                            # logger.warning(f"{count_mail_ok} - count_mail_ok")
+                            # logger.warning(f"{count_status_ok} - count_status_ok")
                         else:
                             count_commom_exc += 1
                             # print("commom_exc:")
@@ -526,9 +547,12 @@ if __name__ == "__main__":
                 count_commom_exc += 1
 
         # pprint(result_collect_parametres)
-        logger.debug(f"{count_total} - count_total")
-        logger.debug(f"{count_mail_ok} - count_mail_ok")
-        logger.debug(f"{count_status_ok} - count_status_ok")
+        logger.warning(f"-----------------------------------------\n")
+        timenow_2 = datetime.datetime.now()
+        print(timenow_2)
+        logger.warning(f"{count_total} - count_total")
+        logger.warning(f"{count_mail_ok} - count_mail_ok")
+        logger.warning(f"{count_status_ok} - count_status_ok")
 
         # print()
         # print(len(result_collect_parametres), 'total rows - collect_parametres')

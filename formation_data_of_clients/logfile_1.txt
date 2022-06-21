@@ -8,3 +8,6 @@ WARNING | logger-proc_1 | 2022-05-31 08:50:25,007 | banks.py | get_result_collec
 WARNING | logger-proc_1 | 2022-05-31 08:55:07,010 | banks.py | get_result_collect_parametres() | line-381 | - 7714424632 - 0373100072422000006 - no price | MainProcess
 WARNING | logger-proc_1 | 2022-05-31 08:57:25,010 | banks.py | get_result_collect_parametres() | line-381 | - 4102008990 - 0138300000422000360 - no price | MainProcess
 WARNING | logger-proc_1 | 2022-05-31 09:11:11,011 | banks.py | get_result_collect_parametres() | line-381 | - 7718162032 - 0895100000122000171 - no price | MainProcess
+WARNING | logger-proc_1 | 2022-06-21 16:35:03,255 | banks.py | get_total_entires() | line-55 | Найдено записей -  1700 | MainProcess
+WARNING | logger-proc_1 | 2022-06-21 22:15:16,477 | banks.py | get_total_entires() | line-55 | Найдено записей -  4800 | MainProcess
+WARNING | logger-proc_1 | 2022-06-21 22:15:58,122 | banks.py | get_total_entires() | line-55 | Найдено записей -  2700 | MainProcess

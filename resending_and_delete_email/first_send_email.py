@@ -22,20 +22,23 @@ def first_send():
     yesterday_obj = sent_letters_collection.find(
         {"create_date": {"$gt": yesterday, "$lte": today}, "send_status": None}
     )
-
+    count = 0
     for entire_id in yesterday_obj:
         logger.debug(
             f"mongo первая отправка письма:"
-            f" email: {entire_id['email_address']},"
-            f" инн: {entire_id['winner_inn']}\n"
+            f" email: {entire_id['email_address']}"
+            f" инн: {entire_id['winner_inn']}"
+            f" - {entire_id['tender_number']}\n"
         )
         send_status = send_email(entire_id)
+        count += 1
         if send_status == "200":
             sent_letters_collection.update_one({"_id": entire_id["_id"]}, {"$set": {"send_status": "1"}})
         elif send_status == "404":
             sent_letters_collection.update_one({"_id": entire_id["_id"]}, {"$set": {"send_status": "404"}})
         elif send_status == "400":
             sent_letters_collection.update_one({"_id": entire_id["_id"]}, {"$set": {"send_status": "400"}})
+        logger.debug(f"Количество новых отправлений: {count}")
 
 
 if __name__ == "__main__":
