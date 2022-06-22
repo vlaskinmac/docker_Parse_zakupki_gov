@@ -571,9 +571,10 @@ if __name__ == "__main__":
     default_start_date_obj = date_today_obj - datetime.timedelta(days=31)
     default_date_today_str = datetime.datetime.strftime(default_start_date_obj, '%d.%m.%Y')
 
-    user_start_date = os.environ.get('START_DATE', default_date_today_str)
-    start_date_1 = user_start_date
-    # end_date_1 = '31.12.2019'
+    # user_start_date = os.environ.get('START_DATE', default_date_today_str)
+    # start_date_1 = user_start_date
+    # end_date_1 = '31.12.2018'
+    start_date_1 = '31.12.2018'
     end_date_1 = date_today_str
 
     # start_date_2 = '25.12.2019'

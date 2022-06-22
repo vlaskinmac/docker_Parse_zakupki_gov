@@ -23,3 +23,5 @@ WARNING | logger-except | 2022-06-21 08:57:08,420 | decorators.py | get_status_c
 WARNING | logger-except | 2022-06-21 13:03:10,009 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
 WARNING | logger-except | 2022-06-21 16:35:06,674 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
 WARNING | logger-except | 2022-06-21 22:15:19,136 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-22 12:50:01,969 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess
+WARNING | logger-except | 2022-06-22 22:06:31,777 | decorators.py | get_status_contract() | Common - 2 Exception: - catching classes that do not inherit from BaseException is not allowed  | MainProcess

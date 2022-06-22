@@ -11,3 +11,55 @@ WARNING | logger-proc_1 | 2022-05-31 09:11:11,011 | banks.py | get_result_collec
 WARNING | logger-proc_1 | 2022-06-21 16:35:03,255 | banks.py | get_total_entires() | line-55 | Найдено записей -  1700 | MainProcess
 WARNING | logger-proc_1 | 2022-06-21 22:15:16,477 | banks.py | get_total_entires() | line-55 | Найдено записей -  4800 | MainProcess
 WARNING | logger-proc_1 | 2022-06-21 22:15:58,122 | banks.py | get_total_entires() | line-55 | Найдено записей -  2700 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 08:17:33,241 | banks.py | get_total_entires() | line-55 | Найдено записей -  0 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 08:55:55,210 | banks.py | get_total_entires() | line-55 | Найдено записей -  0 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 09:22:25,195 | banks.py | get_total_entires() | line-55 | Найдено записей -  0 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 09:25:36,215 | banks.py | get_total_entires() | line-55 | Найдено записей -  2 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:48:43,201 | banks.py | get_total_entires() | line-55 | Найдено записей -  0 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:34,196 | banks.py | get_total_entires() | line-55 | Найдено записей -  1 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:37,527 | banks.py | write_letter_db() | line-449 | записано в mongo+++++++++++++
+ | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:37,528 | banks.py | <module>() | line-550 | -----------------------------------------
+ | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:37,528 | banks.py | <module>() | line-553 | 2 - count_total | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:37,528 | banks.py | <module>() | line-554 | 1 - count_mail_ok | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:37,528 | banks.py | <module>() | line-555 | 1 - count_status_ok | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:44,180 | banks.py | get_total_entires() | line-55 | Найдено записей -  0 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:58,673 | banks.py | get_total_entires() | line-55 | Найдено записей -  3 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:59,919 | banks.py | <module>() | line-550 | -----------------------------------------
+ | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:59,920 | banks.py | <module>() | line-553 | 1 - count_total | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:59,920 | banks.py | <module>() | line-554 | 0 - count_mail_ok | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 12:49:59,920 | banks.py | <module>() | line-555 | 0 - count_status_ok | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 13:39:42,759 | banks.py | get_total_entires() | line-55 | Найдено записей -  1 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 13:39:43,883 | banks.py | <module>() | line-550 | -----------------------------------------
+ | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 13:39:43,883 | banks.py | <module>() | line-553 | 1 - count_total | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 13:39:43,883 | banks.py | <module>() | line-554 | 0 - count_mail_ok | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 13:39:43,883 | banks.py | <module>() | line-555 | 0 - count_status_ok | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 13:39:49,292 | banks.py | get_result_collect_parametres() | line-403 | -----ERROR end -88888--  '94'-- | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 13:39:56,305 | banks.py | write_letter_db() | line-449 | записано в mongo+++++++++++++
+ | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 13:39:59,309 | banks.py | write_letter_db() | line-449 | записано в mongo+++++++++++++
+ | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 13:40:38,276 | banks.py | get_total_entires() | line-55 | Найдено записей -  75 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 14:25:12,252 | banks.py | get_total_entires() | line-55 | Найдено записей -  75 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:39:53,170 | banks.py | get_total_entires() | line-55 | Найдено записей -  1 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:40:05,266 | banks.py | get_total_entires() | line-55 | Найдено записей -  75 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:40:05,572 | banks.py | <module>() | line-550 | -----------------------------------------
+ | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:40:05,572 | banks.py | <module>() | line-553 | 1 - count_total | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:40:05,572 | banks.py | <module>() | line-554 | 0 - count_mail_ok | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:40:05,572 | banks.py | <module>() | line-555 | 0 - count_status_ok | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:43:18,163 | banks.py | get_total_entires() | line-55 | Найдено записей -  1 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:43:20,285 | banks.py | write_letter_db() | line-449 | записано в mongo+++++++++++++
+ | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:43:27,167 | banks.py | get_total_entires() | line-55 | Найдено записей -  1 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:44:53,995 | banks.py | get_total_entires() | line-55 | Найдено записей -  75 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:45:59,697 | banks.py | get_total_entires() | line-55 | Найдено записей -  75 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:48:50,653 | banks.py | get_total_entires() | line-55 | Найдено записей -  2 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:48:57,188 | banks.py | get_total_entires() | line-55 | Найдено записей -  75 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:49:01,216 | banks.py | get_total_entires() | line-55 | Найдено записей -  75 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 15:56:44,189 | banks.py | get_total_entires() | line-55 | Найдено записей -  75 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 22:06:29,824 | banks.py | get_total_entires() | line-55 | Найдено записей -  2600 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 22:07:22,673 | banks.py | get_total_entires() | line-55 | Найдено записей -  4500 | MainProcess

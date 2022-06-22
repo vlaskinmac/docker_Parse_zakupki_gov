@@ -3,11 +3,11 @@ fz_tid = 54
 
 product_tid = 62
 
-costFloat = 479900
+costFloat = 812524
 
-costInt = 479900
+costInt = 812524
 
-days = 223
+days = 222
 
 avans = 
 
@@ -65,8 +65,8 @@ Array
     [delivery] => НЕТ
     [data_from] => 1
     [data_to] => 365
-    [cost_from] => 100000
-    [cost_to] => 500000
+    [cost_from] => 500000
+    [cost_to] => 1000000
     [min_cost] => 1600
     [min_cost_type] => РУБ
     [min_cost_avans] => 1760
@@ -87,8 +87,8 @@ Array
     [delivery] => НЕТ
     [data_from] => 211
     [data_to] => 240
-    [cost_from] => 400000
-    [cost_to] => 499999
+    [cost_from] => 700000
+    [cost_to] => 999999
     [min_cost] => 999
     [min_cost_type] => РУБ
     [min_cost_avans] => 999
@@ -97,8 +97,8 @@ Array
     [besspornoe_spisanie] => 5.1
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 5.83
-    [progressive_procente_avans] => 5.83
+    [progressive_procente] => 4.32
+    [progressive_procente_avans] => 4.32
     [bankStatus] => 1
 )
 Array
@@ -109,8 +109,8 @@ Array
     [delivery] => НЕТ
     [data_from] => 181
     [data_to] => 365
-    [cost_from] => 1
-    [cost_to] => 500000
+    [cost_from] => 500001
+    [cost_to] => 1000000
     [min_cost] => 1300
     [min_cost_type] => РУБ
     [min_cost_avans] => 1300
@@ -175,8 +175,8 @@ Array
     [delivery] => НЕТ
     [data_from] => 1
     [data_to] => 1155
-    [cost_from] => 100001
-    [cost_to] => 500000
+    [cost_from] => 500001
+    [cost_to] => 1000000
     [min_cost] => 800
     [min_cost_type] => РУБ
     [min_cost_avans] => 800
@@ -185,8 +185,8 @@ Array
     [besspornoe_spisanie] => 20
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 4.5
-    [progressive_procente_avans] => 4.5
+    [progressive_procente] => 3.5
+    [progressive_procente_avans] => 3.5
     [bankStatus] => 1
 )
 Array
@@ -197,8 +197,8 @@ Array
     [delivery] => НЕТ
     [data_from] => 1
     [data_to] => 732
-    [cost_from] => 1
-    [cost_to] => 500000
+    [cost_from] => 500001
+    [cost_to] => 1000000
     [min_cost] => 1000
     [min_cost_type] => РУБ
     [min_cost_avans] => 2000
@@ -207,8 +207,8 @@ Array
     [besspornoe_spisanie] => 20
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 4
-    [progressive_procente_avans] => 4
+    [progressive_procente] => 3.2
+    [progressive_procente_avans] => 3.2
     [bankStatus] => 1
 )
 Array
@@ -219,18 +219,18 @@ Array
     [delivery] => НЕТ
     [data_from] => 1
     [data_to] => 365
-    [cost_from] => 100000
-    [cost_to] => 500000
-    [min_cost] => 3000
+    [cost_from] => 500000
+    [cost_to] => 1000000
+    [min_cost] => 2000
     [min_cost_type] => РУБ
-    [min_cost_avans] => 3500
+    [min_cost_avans] => 3000
     [standart_cost] => 5.1
     [standart_cost_type] => ПРОЦЕНТ
     [besspornoe_spisanie] => 5.1
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 2.9
-    [progressive_procente_avans] => 3
+    [progressive_procente] => 2.6
+    [progressive_procente_avans] => 2.8
     [bankStatus] => 1
 )
 Array
@@ -285,8 +285,8 @@ Array
     [delivery] => НЕТ
     [data_from] => 201
     [data_to] => 2200
-    [cost_from] => 100001
-    [cost_to] => 500000
+    [cost_from] => 500001
+    [cost_to] => 1000000
     [min_cost] => 1000
     [min_cost_type] => РУБ
     [min_cost_avans] => 1000
@@ -295,7 +295,7 @@ Array
     [besspornoe_spisanie] => 5.1
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 5.6
+    [progressive_procente] => 4.54
     [progressive_procente_avans] => 0
     [bankStatus] => 1
 )
@@ -373,8 +373,8 @@ Array
     [delivery] => 
     [data_from] => 201
     [data_to] => 2200
-    [cost_from] => 100001
-    [cost_to] => 500000
+    [cost_from] => 500001
+    [cost_to] => 1000000
     [min_cost] => 1000
     [min_cost_type] => РУБ
     [min_cost_avans] => 1000
@@ -383,7 +383,7 @@ Array
     [besspornoe_spisanie] => 5.1
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 5.6
+    [progressive_procente] => 4.54
     [progressive_procente_avans] => 0
     [bankStatus] => 1
 )
@@ -417,8 +417,8 @@ Array
     [delivery] => 
     [data_from] => 1
     [data_to] => 732
-    [cost_from] => 1
-    [cost_to] => 500000
+    [cost_from] => 500001
+    [cost_to] => 1000000
     [min_cost] => 1000
     [min_cost_type] => РУБ
     [min_cost_avans] => 2000
@@ -427,8 +427,8 @@ Array
     [besspornoe_spisanie] => 20
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 4
-    [progressive_procente_avans] => 4
+    [progressive_procente] => 3.2
+    [progressive_procente_avans] => 3.2
     [bankStatus] => 1
 )
 Array
@@ -439,8 +439,8 @@ Array
     [delivery] => 
     [data_from] => 181
     [data_to] => 365
-    [cost_from] => 1
-    [cost_to] => 500000
+    [cost_from] => 500001
+    [cost_to] => 1000000
     [min_cost] => 1300
     [min_cost_type] => РУБ
     [min_cost_avans] => 1300
@@ -461,18 +461,18 @@ Array
     [delivery] => 
     [data_from] => 1
     [data_to] => 365
-    [cost_from] => 100000
-    [cost_to] => 500000
-    [min_cost] => 3000
+    [cost_from] => 500000
+    [cost_to] => 1000000
+    [min_cost] => 2000
     [min_cost_type] => РУБ
-    [min_cost_avans] => 3500
+    [min_cost_avans] => 3000
     [standart_cost] => 5.1
     [standart_cost_type] => ПРОЦЕНТ
     [besspornoe_spisanie] => 5.1
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 2.9
-    [progressive_procente_avans] => 3
+    [progressive_procente] => 2.6
+    [progressive_procente_avans] => 2.8
     [bankStatus] => 1
 )
 Array
@@ -483,8 +483,8 @@ Array
     [delivery] => 
     [data_from] => 211
     [data_to] => 240
-    [cost_from] => 400000
-    [cost_to] => 499999
+    [cost_from] => 700000
+    [cost_to] => 999999
     [min_cost] => 999
     [min_cost_type] => РУБ
     [min_cost_avans] => 999
@@ -493,8 +493,8 @@ Array
     [besspornoe_spisanie] => 5.1
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 5.83
-    [progressive_procente_avans] => 5.83
+    [progressive_procente] => 4.32
+    [progressive_procente_avans] => 4.32
     [bankStatus] => 1
 )
 Array
@@ -505,8 +505,8 @@ Array
     [delivery] => 
     [data_from] => 1
     [data_to] => 365
-    [cost_from] => 100000
-    [cost_to] => 500000
+    [cost_from] => 500000
+    [cost_to] => 1000000
     [min_cost] => 1600
     [min_cost_type] => РУБ
     [min_cost_avans] => 1760
@@ -571,18 +571,18 @@ Array
     [delivery] => 
     [data_from] => 1
     [data_to] => 1155
-    [cost_from] => 100001
-    [cost_to] => 500000
+    [cost_from] => 500001
+    [cost_to] => 1000000
     [min_cost] => 800
     [min_cost_type] => РУБ
     [min_cost_avans] => 800
-    [standart_cost] => 22
+    [standart_cost] => 23
     [standart_cost_type] => ПРОЦЕНТ
     [besspornoe_spisanie] => 20
     [besspornoe_spisanie_type] => ПРОЦЕНТ
     [has_progressive] => 1
-    [progressive_procente] => 4.5
-    [progressive_procente_avans] => 4.5
+    [progressive_procente] => 3.5
+    [progressive_procente_avans] => 3.5
     [bankStatus] => 1
 )
-*/calcSearchCallback({"86":{"bank":{"tid":"86","name":"\u041c\u043e\u0434\u0443\u043b\u044c\u0431\u0430\u043d\u043a","description":""},"cost":9383},"104":{"bank":{"tid":"104","name":"\u0411\u0430\u043d\u043a \u0421\u043e\u044e\u0437","description":""},"cost":9676},"101":{"bank":{"tid":"101","name":"\u0421\u0414\u041c \u0411\u0430\u043d\u043a","description":""},"cost":7037},"100":{"bank":{"tid":"100","name":"\u0410\u041a \u0411\u0430\u0440\u0441","description":""},"cost":17094},"99":{"bank":{"tid":"99","name":"\u041f\u043e\u0447\u0442\u0430 \u0411\u0430\u043d\u043a","description":""},"cost":7624},"98":{"bank":{"tid":"98","name":"\u041c\u0435\u0442\u0430\u043b\u043b\u0438\u043d\u0432\u0435\u0441\u0442\u0431\u0430\u043d\u043a","description":""},"cost":7624},"94":{"bank":{"tid":"94","name":"\u0421\u0431\u0435\u0440\u0431\u0430\u043d\u043a","description":""},"cost":8063},"84":{"bank":{"tid":"84","name":"\u041f\u0440\u043e\u043c\u0441\u0432\u044f\u0437\u044c\u0431\u0430\u043d\u043a","description":""},"cost":13194},"83":{"bank":{"tid":"83","name":"\u0420\u0443\u0441\u043d\u0430\u0440\u0431\u0430\u043d\u043a","description":""},"cost":11728},"74":{"bank":{"tid":"74","name":"\u041c\u0422\u0421-\u0411\u0430\u043d\u043a","description":""},"cost":8503},"63":{"bank":{"tid":"63","name":"\u0412\u043d\u0435\u0448\u0444\u0438\u043d\u0431\u0430\u043d\u043a","description":""},"cost":10262},"72":{"bank":{"tid":"72","name":"\u0410\u043b\u044c\u0444\u0430-\u0431\u0430\u043d\u043a","description":""},"cost":8796},"78":{"bank":{"tid":"78","name":"\u0410\u0431\u0441\u043e\u043b\u044e\u0442 \u0411\u0430\u043d\u043a","description":""},"cost":16420}})
+*/calcSearchCallback({"86":{"bank":{"tid":"86","name":"\u041c\u043e\u0434\u0443\u043b\u044c\u0431\u0430\u043d\u043a","description":""},"cost":15815},"104":{"bank":{"tid":"104","name":"\u0411\u0430\u043d\u043a \u0421\u043e\u044e\u0437","description":""},"cost":16309},"101":{"bank":{"tid":"101","name":"\u0421\u0414\u041c \u0411\u0430\u043d\u043a","description":""},"cost":11861},"100":{"bank":{"tid":"100","name":"\u0410\u041a \u0411\u0430\u0440\u0441","description":""},"cost":21350},"99":{"bank":{"tid":"99","name":"\u041f\u043e\u0447\u0442\u0430 \u0411\u0430\u043d\u043a","description":""},"cost":12850},"98":{"bank":{"tid":"98","name":"\u041c\u0435\u0442\u0430\u043b\u043b\u0438\u043d\u0432\u0435\u0441\u0442\u0431\u0430\u043d\u043a","description":""},"cost":12850},"94":{"bank":{"tid":"94","name":"\u0421\u0431\u0435\u0440\u0431\u0430\u043d\u043a","description":""},"cost":13591},"84":{"bank":{"tid":"84","name":"\u041f\u0440\u043e\u043c\u0441\u0432\u044f\u0437\u044c\u0431\u0430\u043d\u043a","description":""},"cost":17297},"83":{"bank":{"tid":"83","name":"\u0420\u0443\u0441\u043d\u0430\u0440\u0431\u0430\u043d\u043a","description":""},"cost":15815},"74":{"bank":{"tid":"74","name":"\u041c\u0422\u0421-\u0411\u0430\u043d\u043a","description":""},"cost":12850},"63":{"bank":{"tid":"63","name":"\u0412\u043d\u0435\u0448\u0444\u0438\u043d\u0431\u0430\u043d\u043a","description":""},"cost":17297},"72":{"bank":{"tid":"72","name":"\u0410\u043b\u044c\u0444\u0430-\u0431\u0430\u043d\u043a","description":""},"cost":14826},"78":{"bank":{"tid":"78","name":"\u0410\u0431\u0441\u043e\u043b\u044e\u0442 \u0411\u0430\u043d\u043a","description":""},"cost":22437}})

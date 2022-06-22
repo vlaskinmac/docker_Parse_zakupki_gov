@@ -484,7 +484,7 @@ if __name__ == "__main__":
 
     # start_update_date = '17.06.2022'
     per_page = 100
-    price_min = '1000000'
+    price_min = '300000'
     count_total = 0
     count_status_ok = 0
     count_status_no = 0
