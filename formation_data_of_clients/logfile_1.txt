@@ -63,3 +63,4 @@ WARNING | logger-proc_1 | 2022-06-22 15:49:01,216 | banks.py | get_total_entires
 WARNING | logger-proc_1 | 2022-06-22 15:56:44,189 | banks.py | get_total_entires() | line-55 | Найдено записей -  75 | MainProcess
 WARNING | logger-proc_1 | 2022-06-22 22:06:29,824 | banks.py | get_total_entires() | line-55 | Найдено записей -  2600 | MainProcess
 WARNING | logger-proc_1 | 2022-06-22 22:07:22,673 | banks.py | get_total_entires() | line-55 | Найдено записей -  4500 | MainProcess
+WARNING | logger-proc_1 | 2022-06-22 22:53:52,928 | banks.py | get_total_entires() | line-55 | Найдено записей -  4500 | MainProcess

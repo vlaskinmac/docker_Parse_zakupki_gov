@@ -574,7 +574,7 @@ if __name__ == "__main__":
     # user_start_date = os.environ.get('START_DATE', default_date_today_str)
     # start_date_1 = user_start_date
     # end_date_1 = '31.12.2018'
-    start_date_1 = '31.12.2018'
+    start_date_1 = '31.12.2019'
     end_date_1 = date_today_str
 
     # start_date_2 = '25.12.2019'
